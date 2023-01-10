@@ -1,3 +1,25 @@
 .login-button{
 margin-top: 150px;
 }
+.imgBG{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+}
+.smallBox{
+    padding-bottom: 10em;
+    padding: 3em;
+    background: #fff;
+    /* position: absolute; */
+    display: flex;
+    
+    z-index: 10;
+}
+.textSize{
+    font-size: 2em;
+    color: #000;
+}
+.imgSize{
+    background-size: 99px;
+}
