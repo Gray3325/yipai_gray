@@ -33,11 +33,28 @@ router.get("/artistData",checkLogin, async (req, res, next) => {
 router.put("/",checkLogin, async (req, res, next) => {
   // console.log("/users/:usersId TO upload ", req.params.usersId);
   let [data] = await pool.query(
-      "UPDATE users SET users_name = ? , users_account = ? , users_email = ? ,users_phone = ? WHERE users_id = ?",
+      "UPDATE users SET users_name = ? , users_account = ? , users_email = ? ,users_phone = ? WHERE  users_valid_role=0 &&  users_id = ?",
       [
           req.body.username,
           req.body.account,
           req.body.email,
+          req.body.phone,
+          req.body.usersId,
+      ]
+  );
+  console.log(req.body);
+  res.json(data);
+});
+module.exports = router;
+// PUT /api/members/artistData
+router.put("/artistData",checkLogin, async (req, res, next) => {
+  // console.log("/users/:usersId TO upload ", req.params.usersId);
+  let [data] = await pool.query(
+      "UPDATE users SET users_name = ? , users_account = ? ,users_phone = ? WHERE users_valid_role=1 && users_id = ?",
+      [
+          req.body.username,
+          req.body.account,
+          // req.body.email,
           req.body.phone,
           req.body.usersId,
       ]

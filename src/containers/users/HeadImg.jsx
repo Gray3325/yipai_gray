@@ -1,4 +1,4 @@
-import { React, useRef, createRef, useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import BuyBotton from "./BuyBotton";
 import {
     BuyerSettings,
@@ -6,7 +6,6 @@ import {
     PurchaseHistory,
     FavoriteArtist,
     FavoriteArts,
-    // getMemberId
 } from "./userOnclick";
 import Art from "./Art";
 import ArtList from "./ArtList";
@@ -18,9 +17,9 @@ import axios from "axios";
 import buyerImg from "./image/buyHead.png";
 
 function HeadImg(user) {
-    let [UserData, setUserData] = useState(); //記錄數值
-    let [UserOldDatas, setUserOldDatas] = useState(); //原本的數據
-    let [UserOrders,setUserOrders] = useState(); //記錄使用者訂單
+    let [UserData, setUserData] = useState({}); //記錄數值
+    let [UserOldDatas, setUserOldDatas] = useState({}); //原本的數據
+    let [UserOrders,setUserOrders] = useState({}); //記錄使用者訂單
     // 只執行一次
     useEffect(() => {
         async function getMember2() {
@@ -96,7 +95,7 @@ function HeadImg(user) {
                 </div>
                 <h3>
                     您好
-                    {/* <span>{UserOldData.users_name}</span> */}
+                    <span>{UserOldDatas.users_name}</span>
                     <span>你現在是</span>
                     <span>藝拍小夥伴啦</span>
                 </h3>
@@ -162,7 +161,7 @@ function HeadImg(user) {
                                         className='_buyLogin_SettingInput'
                                         type='text'
                                         name='username'
-                                        // placeholder={UserOldData.users_name}
+                                        placeholder={UserOldDatas.users_name}
                                         value={UserInputData.username}
                                         onChange={handleChange}
                                         required
@@ -176,6 +175,7 @@ function HeadImg(user) {
                                         className='_buyLogin_SettingInput'
                                         type='text'
                                         name='account'
+                                        placeholder={UserOldDatas.users_account}
                                         value={UserInputData.account}
                                         onChange={handleChange}
                                         required
@@ -324,14 +324,18 @@ function HeadImg(user) {
                             </tr>
                         </thead>
                         <tbody>
-                        {/* {UserOldDatas.map(UserOldData => ( */}
+                        {/* <div key={UserOrders.order_id}>{UserOrders.order_id}</div> */}
+                        {/* { OrderMap() { */}
+                            {/* UserOrders.map(User_Order => ( */}
+                        
+                        
                             
                             <tr 
-                                // key={UserOldData.order_id}
+                                // key={User_Order.order_id}
                                 className='_buyLogin_tr _buyLogin_tline'
                                 style={{ borderColor: "#CAB296" }}
                             >
-                                {/* <td>{UserOldData.order_date}</td> */}
+                                {/* <td>{User_Order.order_date}</td> */}
                                 <td>12,800</td>
                                 <td>2022/11/02</td>
                                 <td>1</td>
@@ -341,7 +345,7 @@ function HeadImg(user) {
                                     </button>
                                 </td>
                             </tr>
-                            {/* ))} */}
+                            {/* ))}} */}
                         </tbody>
                     </table>
                 </div>
