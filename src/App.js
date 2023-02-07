@@ -34,6 +34,7 @@ import MultipleCart from "./containers/cart/pages/ShoppingCart/MultipleCart";
 import { CartProvider } from "./containers/cart/utils/useCart";
 import { SecondCartProvider } from "./containers/cart/utils/useSecondCart";
 import { HeadImg } from "./containers/users/HeadImg";
+import SellerHome from "./containers/users/Sell/SellerHome";
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
                     <Route path="/users/SellLogin" element={<SellLogin />} />
                     <Route path="/users/Register" element={<Register />} />
                     <Route path="/users/LoginTo" element={<HeadImg />} />
+                    <Route path="/users/ArtistLoginTo" element={<SellerHome/>} />
                     <Route
                       path="/users/SellRegister"
                       element={<SellRegister />}

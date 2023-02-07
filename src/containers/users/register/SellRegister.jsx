@@ -38,6 +38,11 @@ const SellRegister = () => {
             formData
         );
         console.log(response.data);
+        alert("註冊成功");
+        // 跳轉
+        setTimeout(() => {
+            window.location.assign("/users/ArtistLoginTo");
+        }, 1000);
     }
     return (
         <>
@@ -92,6 +97,7 @@ const SellRegister = () => {
                             <button
                                 type='submit'
                                 className='_SellRegister_btn'
+
                                 onClick={handleSubmit}
                             >
                                 送出
