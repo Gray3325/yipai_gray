@@ -105,7 +105,7 @@ app.get("/api", checkLogin, async (req, res, next) => {
 const authRouter = require("./routers/authRouter");
 app.use("/api/auth", authRouter);
 
-// 會員登入路由
+// 買家會員登入路由
 const memberRouter = require("./routers/memberRouter");
 app.use("/api/members", memberRouter);
 

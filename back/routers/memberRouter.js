@@ -17,12 +17,18 @@ router.get('/orders', checkLogin, async(req, res, next) => {
 });
 // GET  /api/members/userData
 router.get("/userData",checkLogin, async (req, res, next) => {
-  let [data] = await pool.query("SELECT user_imageHead,user_imagePage,users_name,users_account,users_main_product,users_aside_picture,users_phone,users_email,users_slogan,users_introduce,users_city,users_township,users_street FROM users WHERE users_id=? ", [
+  let [data] = await pool.query("SELECT user_imageHead,user_imagePage,users_name,users_account,users_main_product,users_aside_picture,users_phone,users_email,users_slogan,users_introduce,users_city,users_township,users_street FROM users WHERE users_valid_role=0 && users_id=? ", [
     req.session.member.users_id,
   ]);
   res.json(data);
 });
-
+//GET  /api/members/artistData
+router.get("/artistData",checkLogin, async (req, res, next) => {
+  let [data] = await pool.query("SELECT user_imageHead,user_imagePage,users_name,users_account,users_main_product,users_aside_picture,users_phone,users_email,users_slogan,users_introduce,users_city,users_township,users_street FROM users WHERE users_valid_role=1 && users_id=? ", [
+    req.session.member.users_id,
+  ]);
+  res.json(data);
+});
 // PUT /api/members
 router.put("/",checkLogin, async (req, res, next) => {
   // console.log("/users/:usersId TO upload ", req.params.usersId);

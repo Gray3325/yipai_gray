@@ -2,11 +2,7 @@ import React from "react";
 import "./sellregister.css";
 import axios from "axios";
 import { useState } from "react";
-
-// import { Link } from "react-router-dom";
-// import HeadImg from "../HeadImg";
 import { FaUserCircle } from "react-icons/fa";
-// import { height } from '@mui/system';
 
 const SellRegister = () => {
     const [member, setMember] = useState({
@@ -18,17 +14,14 @@ const SellRegister = () => {
     });
     // 輸入的值更動的函式
     function handleChange(e) {
-        // console.log(e);
+        console.log(e);
         let newMember = { ...member };
         newMember[e.target.name] = e.target.value;
         setMember(newMember);
+        console.log(member);
         // setMember({ ...member, [e.target.name]: e.target.value });
     }
-    // 上傳圖片用
-    // function handleUpload(e) {
-    //     // file input 的值並不是存在 value 欄位裡，是在member裡
-    //     setMember({ ...member, photo: e.target.files[0] });
-    // }
+    
     async function handleSubmit(e) {
         console.log("handleSubmit");
         // 關閉表單的預設行為
@@ -67,7 +60,7 @@ const SellRegister = () => {
                             <input
                                 type='text'
                                 className='_SellRegister_inputBox'
-                                name='accountNumber'
+                                name='name'
                                 placeholder=' 姓名'
                                 value={member.name}
                                 onChange={handleChange}
@@ -75,7 +68,7 @@ const SellRegister = () => {
                             <input
                                 type='text'
                                 className='_SellRegister_inputBox2'
-                                name='password'
+                                name='account'
                                 placeholder=' 帳號'
                                 value={member.account}
                                 onChange={handleChange}
@@ -91,7 +84,7 @@ const SellRegister = () => {
                             <input
                                 type='password'
                                 className='_SellRegister_inputBox2'
-                                name='password'
+                                name='confirmPassword'
                                 placeholder=' 再輸入一次密碼'
                                 value={member.confirmPassword}
                                 onChange={handleChange}

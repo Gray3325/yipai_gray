@@ -129,7 +129,7 @@ router.post('/register', uploader.single('photo'), registerRules, async (req, re
 });
 // /api/auth/Artregister 賣家註冊網址
 router.post('/Artregister', uploader.single('photo'), registerRules, async (req, res, next) => {
-  console.log('I am register', req.body, req.file);
+  console.log('I am Artistregister', req.body, req.file);
 
   //TODO:async/await 應該要有 try-catch 去做錯誤處理
 
@@ -170,7 +170,7 @@ router.post('/Artregister', uploader.single('photo'), registerRules, async (req,
   
   // 還沒雜湊的密碼上傳
   let result = await pool.execute('INSERT INTO users (users_account, users_password, users_name, user_imageHead,users_valid_role) VALUES (?, ?, ?, ?, ?);', [req.body.account, req.body.password, req.body.name, filename, 1]);
-  console.log('register: insert to db', result);
+  console.log('Artistregister: insert to db', result);
 
   // 回覆給前端
   res.json({
@@ -180,7 +180,7 @@ router.post('/Artregister', uploader.single('photo'), registerRules, async (req,
 });
 // /api/auth/login 處理登入的網址
 router.post('/login', async (req, res, next) => {
-  // 確認 email 是否存在
+  // 確認 account 是否存在
   let [members] = await pool.execute('SELECT * FROM users WHERE users_account = ?', [req.body.account]);
   if (members.length === 0) {
     // 表示這個 account 不存在資料庫中 -> 沒註冊過
