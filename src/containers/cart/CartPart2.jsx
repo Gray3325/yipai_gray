@@ -38,8 +38,20 @@ const CartPart2 = () => {
     const shuffledUsers = shuffleArray(data).slice(0, 1);
     setUsers(shuffledUsers);
     getUsers();
+    
   }, []);
-
+  async function postOrder() {
+    
+    // console.log(cart.cartTotal);
+    let response = await axios.post(`http://localhost:3001/api/members/orders`,{
+      product_id:'44',
+      amount:cart.totalItems,
+      payment:'Line Pay',
+      send_address:users[0].send_address,
+      total:cart.cartTotal,
+    });
+    console.log(response.data);
+  }
   const {
     cart,
     items,
@@ -109,6 +121,7 @@ const CartPart2 = () => {
           <FaListAlt className="iconStyle-title" />
           最後訂單確認
         </h2>
+        <button onClick={postOrder}>test</button>
       </div>
       <div className="dis-re">
         <ListItemsWithHook />

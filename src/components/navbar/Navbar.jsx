@@ -9,7 +9,10 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useCart } from "../../containers/cart/utils/useCart";
 
+
 import axios from "axios";
+
+
 
 
 
@@ -32,7 +35,7 @@ const Navbar = () => {
   // const addCount=()=>setCount(cart.totalItems);
   // count = cart.totalItems
 
-  const [toggleMenu, setToggleMenu] = useState(false);
+    const [toggleMenu, setToggleMenu] = useState(false);
 
   const [product, setProduct] = useState([]);
   const [user_order, setUserOrder] = useState([]);
