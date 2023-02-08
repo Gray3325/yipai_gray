@@ -38,11 +38,6 @@ app.use(
     })
 );
 
-// middleware => pipeline pattern
-
-// 處理使用者註冊時上傳的圖片網址
-// app.use('/public', express.static('./public'));
-
 // 首頁
 app.get("/", async (req, res, next) => {
     console.log("這裡是藝拍首頁,顯示首頁資料");
@@ -133,6 +128,9 @@ app.put("/users/:usersId", async (req, res, next) => {
     console.log(req.body);
     res.json(data);
 });
+// 上傳圖片
+// http://localhost:3001/public/uploads
+app.use('/public', express.static('./public'));
 
 // 展覽消息
 app.get("/news", async (req, res, next) => {

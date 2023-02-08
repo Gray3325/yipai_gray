@@ -128,7 +128,7 @@ router.post('/register', uploader.single('photo'), registerRules, async (req, re
   });
 });
 // /api/auth/Artregister 賣家註冊網址
-router.post('/Artregister', uploader.single('photo'), registerRules, async (req, res, next) => {
+router.post('/Artregister',  registerRules, async (req, res, next) => {
   console.log('I am Artistregister', req.body, req.file);
 
   //TODO:async/await 應該要有 try-catch 去做錯誤處理
@@ -302,7 +302,7 @@ router.post('/Artistlogin', async (req, res, next) => {
   });
   console.log('藝術家登入成功！');
 });
-// 登出 http://localhost:3000/api/auth/logout
+// 登出 http://localhost:3001/api/auth/logout
 router.get('/logout', (req, res, next) => {
   req.session.member = null;
   res.sendStatus(202);

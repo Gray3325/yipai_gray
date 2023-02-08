@@ -31,7 +31,7 @@ const Navbar = () => {
 
     const [product, setProduct] = useState([]);
     const [user_order, setUserOrder] = useState([]);
-    const[UserName,setUserName]=useState({});
+    const[UserName,setUserName]=useState([]);
     useEffect(() => {
         async function getMember2() {
             let response2 = await axios.get(
@@ -94,7 +94,7 @@ const Navbar = () => {
                     <Link to='users'>
                         <FaUser className='iconStyle' />
                     </Link>
-                    {UserName.users_name}
+                    {/* {UserName.users_name} */}
                 </div>
                 <div className='yipai__navbar-menu'>
                     {toggleMenu ? (
