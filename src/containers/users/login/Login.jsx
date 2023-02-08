@@ -32,7 +32,7 @@ const Login = () => {
         // 跳轉
         setTimeout(() => {
             window.location.assign("/users/LoginTo");
-        }, 1000);
+        }, 500);
     }
 
     return (

@@ -52,7 +52,7 @@ function HeadImg(user) {
     });
     // 每次輸入後更新
     useEffect(() => {
-        console.log(UserInputData);
+        // console.log(UserInputData);
     }, [UserInputData]);
     // 每次輸入後更新
     const handleChange = (event) => {
@@ -76,8 +76,8 @@ function HeadImg(user) {
             .then((response) => console.log(response))
             .catch((error) => console.error(error));
     };
-    console.log(UserOldDatas);
-    console.log(UserOrders);
+    // console.log(UserOldDatas);
+    // console.log(UserOrders);
 
     return (
         <div className='_buyLogin_flex'>
