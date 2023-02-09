@@ -44,11 +44,14 @@ const CartPart2 = () => {
     
     // console.log(cart.cartTotal);
     let response = await axios.post(`http://localhost:3001/api/members/orders`,{
+      
       product_id:'44',
       amount:cart.totalItems,
       payment:'Line Pay',
       send_address:users[0].send_address,
       total:cart.cartTotal,
+    },{
+      withCredentials:true,
     });
     console.log(response.data);
   }
