@@ -28,7 +28,7 @@ const Login = () => {
             }
         );
         console.log(response.data);      
-        alert("註冊成功");
+        alert("登入成功");
         // 跳轉
         setTimeout(() => {
             window.location.assign("/users/LoginTo");
