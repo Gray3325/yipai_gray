@@ -14,7 +14,6 @@ import ArtistImg from "./image/ArtistImg.png";
 import pesnalImg from "./image/pesnalImg.png";
 import artsImg from "./image/artsImg.png";
 import axios from "axios";
-import buyerImg from "./image/buyHead.png";
 
 function HeadImg(user) {
     let [UserData, setUserData] = useState({}); //記錄數值
@@ -56,7 +55,6 @@ function HeadImg(user) {
     //================================================================
     //  記錄輸入的產品
     const [productInputData, setProductInputData] = useState({
-        // userId: UserData,
         photo: "",
     });
     // 每次輸入後更新產品資料
@@ -75,16 +73,16 @@ function HeadImg(user) {
         console.log("handleProductSubmit");
         // 關閉表單的預設行為
         e.preventDefault();
-
-        // let response = await axios.post('http://localhost:3001/product', productInputData);
         let formData = new FormData();
-        // formData.append("userId", productInputData.userId);
         formData.append("photo", productInputData.photo);
         let response = await axios.post(
             "http://localhost:3001/uploadsPhoto/product",
-            formData
+            formData,{
+                withCredentials: true,
+            }
         );
         console.log(response.data);
+        alert('圖片上傳成功');
     }
     //================================================================
     // 每次輸入後更新
@@ -126,8 +124,8 @@ function HeadImg(user) {
         <div className='_buyLogin_flex'>
             <div className='_buyLogin_RWDflexcol _buyLogin_rwd_flex'>
                 <div className='_buyLogin_flex-re' style={{ marginTop: "1em" }}>
-                    <img
-                        src={UserImg} //
+                <img
+                 src={UserOldDatas && UserOldDatas.user_imageHead && UserOldDatas.user_imageHead.includes("http")?UserOldDatas.user_imageHead:"http://localhost:3001/public/uploads/"+ UserOldDatas.user_imageHead} 
                         alt='buyHead'
                         className='_buyLogin_headImg'
                     />
@@ -380,7 +378,6 @@ function HeadImg(user) {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* <div key={UserOrders.order_id}>{UserOrders.order_id}</div> */}
                             {UserOrders.map((User_Order) => (
                                 <tr
                                     key={User_Order.order_id}

@@ -41,16 +41,16 @@ const uploader = multer({
     }
   },
   // 限制檔案的大小
-  // limits: {
+  limits: {
   //   // 1k = 1024 => 200k 200x1024
-  //   fileSize: 200 * 1024, // 204800
-  // },
+    fileSize: 200 * 1024, // 204800
+  },
 });
 // /uploadsPhoto/product
-router.post("/product",uploader.single('photo'), async (req, res, next) => {
-    console.log("product post", req.file.filename,req.body);
-    // let [data] = await pool.query("UPDATE users SET user_imageHead=? WHERE users_id=?", [req.file.filename,1]);
-    // res.json(data);
+router.post("/product",checkLogin,uploader.single('photo'), async (req, res, next) => {
+    console.log("product post", req.file.filename,req.session.member.users_id);
+    let [data] = await pool.query("UPDATE users SET user_imageHead=? WHERE users_id=?", [req.file.filename,req.session.member.users_id]);
+    res.json(data);
 });
 //================================================================
 
