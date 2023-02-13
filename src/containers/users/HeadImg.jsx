@@ -52,6 +52,9 @@ function HeadImg(user) {
         // imageHead: "",
         phone: "",
     });
+    const [UserInputAdd, setUserInputAdd] = useState({
+        
+    });
     //================================================================
     //  記錄輸入的產品
     const [productInputData, setProductInputData] = useState({
@@ -98,7 +101,7 @@ function HeadImg(user) {
         UserFormData.append("account", UserInputData.account);
         UserFormData.append("email", UserInputData.email);
         UserFormData.append("phone", UserInputData.phone);
-        UserFormData.append("photo", productInputData.photo);
+        // UserFormData.append("photo", productInputData.photo);
         UserFormData.append("usersId", UserData);
 
     const handleSubmit = (event) => {
@@ -134,8 +137,8 @@ function HeadImg(user) {
                         <div>
                             <input
                                 type='file'
-                                id='imageHead'
-                                name='imageHead'
+                                id='photo'
+                                name='photo'
                                 style={{ display: "none" }}
                                 // value={imgServerUrl}
                                 onChange={handleUpload}

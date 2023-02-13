@@ -69,14 +69,15 @@ router.get("/userData",checkLogin, async (req, res, next) => {
 // GET 
 
 // POST /api/members/orders 送出訂單
-router.post("/orders",async(req,res,next)=>{
-  let [data] =await pool.query("INSERT INTO user_order (product_id, user_id, amount,payment,send_address,total) VALUES (?,?,?,?,?,?) ",[
+router.post("/orders",checkLogin,async(req,res,next)=>{
+  let [data] =await pool.query("INSERT INTO user_order (product_id, user_id, amount,payment,send_address,total,pirce) VALUES (?,?,?,?,?,?,?) ",[
     req.body.product_id,
     req.session.member.users_id,
     req.body.amount,
     req.body.payment,
     req.body.send_address,
     req.body.total,
+    req.body.pirce,
   ]);
   console.log(req.data);
   res.json(data);
